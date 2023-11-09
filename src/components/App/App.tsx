@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "~/components/MainLayout/MainLayout";
 import PageProductForm from "~/components/pages/PageProductForm/PageProductForm";
@@ -9,6 +10,11 @@ import PageProducts from "~/components/pages/PageProducts/PageProducts";
 import { Typography } from "@mui/material";
 
 function App() {
+  React.useEffect(() => {
+    const accountId = import.meta.env.VITE_GITHUB_ACCOUNT_LOGIN;
+    const password = import.meta.env.VITE_TEST_PASSWORD;
+    localStorage.setItem('authorizationToken', btoa(`${accountId}:${password}`))
+  },[]);
   return (
     <MainLayout>
       <Routes>
